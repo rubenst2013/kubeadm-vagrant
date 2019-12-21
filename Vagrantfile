@@ -248,6 +248,8 @@ Vagrant.configure("2") do |config|
   config.vm.box = BOX_IMAGE
   config.vm.box_check_update = false
 
+  config.vm.boot_timeout = 600
+
   config.vm.provider "virtualbox" do |l|
     l.cpus = 1
     l.memory = "1024"
