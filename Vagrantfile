@@ -251,6 +251,8 @@ Vagrant.configure("2") do |config|
   config.vm.provider "virtualbox" do |l|
     l.cpus = 1
     l.memory = "1024"
+    l.gui = false
+    l.linked_clone = true
   end
 
   config.vm.provision :shell, inline: init_script
