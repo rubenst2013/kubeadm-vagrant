@@ -15,10 +15,17 @@ EOF
 sysctl --system
 
 echo "apt_preserve_sources_list: true" > /etc/cloud/cloud.cfg.d/99-apt-preserve-sources-list.cfg
-sed -i 's/\\(archive\\|security\\)\\.ubuntu\\.com/mirrors\\.aliyun\\.com/g' /etc/apt/sources.list
-curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | apt-key add -
+
+apt-get update && apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 cat > /etc/apt/sources.list.d/docker-ce.list <<EOF
-deb http://mirrors.aliyun.com/docker-ce/linux/ubuntu disco stable
+deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
 EOF
 apt-get update && apt-get install -y docker-ce=#{$DOCKER_VER}
 
