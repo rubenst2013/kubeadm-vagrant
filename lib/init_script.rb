@@ -42,9 +42,6 @@ cat > /etc/docker/daemon.json <<EOF
 EOF
 mkdir -p /etc/systemd/system/docker.service.d
 
-# https://github.com/kubernetes/kubernetes/issues/45487
-echo 'User=root' >> /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
-
 systemctl daemon-reload
 systemctl enable kubelet && systemctl restart kubelet
 systemctl enable docker && systemctl restart docker
