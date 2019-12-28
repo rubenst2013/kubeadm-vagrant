@@ -15,8 +15,9 @@ Vagrant.configure("2") do |config|
   config.vm.boot_timeout = 600
 
   config.vm.provider "virtualbox" do |l|
-    l.cpus = 1
-    l.memory = "1024"
+    l.cpus = 3
+    l.memory = "8192"
+
     l.gui = false
     l.linked_clone = true
   end
