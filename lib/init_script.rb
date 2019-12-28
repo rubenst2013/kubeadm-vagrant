@@ -19,8 +19,6 @@ vm.swappiness=0
 EOF
 sysctl --system
 
-echo "apt_preserve_sources_list: true" > /etc/cloud/cloud.cfg.d/99-apt-preserve-sources-list.cfg
-
 apt-get update && apt-get install -y \
     apt-transport-https \
     ca-certificates \

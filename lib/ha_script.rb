@@ -131,7 +131,7 @@ EOF
 
   status "running kubeadm init on the first master node.."
   kubeadm reset -f
-  kubeadm init --config=/tmp/kubeadm-config.yaml --experimental-upload-certs | tee /vagrant/kubeadm.log
+  kubeadm init --config=/tmp/kubeadm-config.yaml --upload-certs | tee /vagrant/kubeadm.log
 
   mkdir -p $HOME/.kube
   sudo cp -Rf /etc/kubernetes/admin.conf $HOME/.kube/config
