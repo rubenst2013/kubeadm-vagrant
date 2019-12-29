@@ -110,28 +110,20 @@ EOF
 systemctl restart haproxy
 
 if [ ${vrrp_state} = "MASTER" ]; then
-  cat > /tmp/kubeadm-config.yaml <<EOF
-apiVersion: kubeadm.k8s.io/v1beta1
-kind: InitConfiguration
-bootstrapTokens:
-- token: #{$KUBE_TOKEN}
-  ttl: 24h
-localAPIEndpoint:
-  advertiseAddress: ${vrrp_ip}
-  bindPort: 6443
----
-apiVersion: kubeadm.k8s.io/v1beta1
-kind: ClusterConfiguration
-kubernetesVersion: v#{$KUBE_VER}
-controlPlaneEndpoint: "#{$MASTER_IP}:#{$MASTER_PORT}"
-imageRepository: #{$IMAGE_REPO}
-networking:
-  podSubnet: 10.244.0.0/16
-EOF
-
   status "running kubeadm init on the first master node.."
   kubeadm reset -f
-  kubeadm init --config=/tmp/kubeadm-config.yaml --upload-certs | tee /vagrant/kubeadm.log
+  kubeadm init \
+    --upload-certs \
+    --token #{$KUBE_TOKEN} \
+    --token-ttl 24h \
+    --apiserver-advertise-address ${vrrp_ip} \
+    --apiserver-bind-port 6443 \
+    \
+    --kubernetes-version v#{$KUBE_VER} \
+    --control-plane-endpoint "#{$MASTER_IP}:#{$MASTER_PORT}" \
+    --image-repository "k8s.gcr.io" \
+    --pod-network-cidr "10.244.0.0/16" \
+    | tee /vagrant/kubeadm.log
 
   mkdir -p $HOME/.kube
   sudo cp -Rf /etc/kubernetes/admin.conf $HOME/.kube/config
@@ -146,7 +138,7 @@ else
   kubeadm reset -f
   kubeadm join #{$MASTER_IP}:#{$MASTER_PORT} --token #{$KUBE_TOKEN} \
     --discovery-token-ca-cert-hash ${discovery_token_ca_cert_hash} \
-    --experimental-control-plane --certificate-key ${certificate_key} \
+    --control-plane --certificate-key ${certificate_key} \
     --apiserver-advertise-address ${vrrp_ip}
 fi
 SCRIPT
