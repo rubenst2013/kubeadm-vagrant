@@ -20,6 +20,13 @@ Vagrant.configure("2") do |config|
 
     vb.gui = false
     vb.linked_clone = true
+
+    vb.customize ["modifyvm", :id, "--hwvirtex", "on"]
+    vb.customize ["modifyvm", :id, "--triplefaultreset", "on"]
+    vb.customize ["modifyvm", :id, "--largepages", "on"]
+    vb.customize ["modifyvm", :id, "--vtxvpid", "on"]
+    vb.customize ["modifyvm", :id, "--graphicscontroller", "vmsvga"]
+    vb.customize ["modifyvm", :id, "--vram", "128"]
   end
 
   config.vm.provision :shell, inline: $init_script
