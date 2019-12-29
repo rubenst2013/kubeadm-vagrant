@@ -14,12 +14,12 @@ Vagrant.configure("2") do |config|
 
   config.vm.boot_timeout = 600
 
-  config.vm.provider "virtualbox" do |l|
-    l.cpus = 3
-    l.memory = "8192"
+  config.vm.provider "virtualbox" do |vb|
+    vb.cpus = 3
+    vb.memory = "8192"
 
-    l.gui = false
-    l.linked_clone = true
+    vb.gui = false
+    vb.linked_clone = true
   end
 
   config.vm.provision :shell, inline: $init_script
