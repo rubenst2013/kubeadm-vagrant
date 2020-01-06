@@ -25,7 +25,7 @@ end
 # Generate backends for public facing load balancer
 def gen_haproxy_lb_backend(node_count, backend_port)
   server=""
-  (1..load_balancer_count).each do |i|
+  (1..node_count).each do |i|
     ip = $NODE_IP_NW + "#{i + 20}"
     server << "    server node#{i} #{ip}:#{backend_port} check\n"
   end
