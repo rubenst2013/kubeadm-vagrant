@@ -109,9 +109,11 @@ EOF
 
 systemctl restart haproxy
 
+status "Resetting cluster, please ignore possible warnings..."
+kubeadm reset -f
+
 if [ ${vrrp_state} = "MASTER" ]; then
   status "running kubeadm init on the first master node.."
-  kubeadm reset -f
   kubeadm init \
     --upload-certs \
     --token #{$KUBE_TOKEN} \
@@ -140,7 +142,6 @@ else
   status "joining master node.."
   discovery_token_ca_cert_hash="$(grep 'discovery-token-ca-cert-hash' /vagrant/kubeadm.log | head -n1 | awk '{print $2}')"
   certificate_key="$(grep 'certificate-key' /vagrant/kubeadm.log | head -n1 | awk '{print $3}')"
-  kubeadm reset -f
   kubeadm join #{$MASTER_IP}:#{$MASTER_PORT} --token #{$KUBE_TOKEN} \
     --discovery-token-ca-cert-hash ${discovery_token_ca_cert_hash} \
     --control-plane --certificate-key ${certificate_key} \
