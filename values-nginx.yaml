@@ -1,0 +1,65 @@
+# TCP proxy for SM
+#tcp:
+#  1433: "default/mssqlserver:1433"
+
+# default backend settings
+defaultBackend:
+  resources:
+    limits:
+      cpu: 10m
+      memory: 20Mi
+    requests:
+      cpu: 10m
+      memory: 20Mi
+
+# controller settings
+controller:
+  useHostNetwork: true
+  config:
+    # disable client size checking for proxy (prevents webdav disconnects)
+    proxy-body-size: "0"
+    # enable _pos_service_session_ header forwarding
+    enable-underscores-in-headers: "true"
+    # hide server tokens that can identify the server
+    server-tokens: "false"
+
+  ingressClass: nginx
+  ingress:
+    enabled: true
+
+  scope:
+    enabled: true
+    namespace: ""
+
+  metrics:
+    enabled: true
+    service:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "10254"
+
+  kind: DaemonSet
+  daemonset:
+    useHostPort: true
+
+  resources:
+    limits:
+      cpu: 500m
+      memory: 512Mi
+    requests:
+      cpu: 100m
+      memory: 256Mi
+
+  autoscaling:
+    enabled: false
+#    minReplicas: 1
+#    maxReplicas: 2
+#    targetCPUUtilizationPercentage: 50
+#    targetMemoryUtilizationPercentage: 50
+
+  service:
+    enabled: false
+    type: NodePort
+    externalTrafficPolicy: "Local"
+    enableHttp: true
+    enableHttps: true
