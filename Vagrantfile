@@ -37,7 +37,7 @@ Vagrant.configure("2") do |config|
     hostname= "master#{ha ? i: ''}"
     config.vm.define(hostname) do |subconfig|
       subconfig.vm.hostname = hostname
-      subconfig.vm.network :private_network, nic_type: "virtio", ip: ha ? $NODE_IP_NW + "#{i + 10}" : $MASTER_IP
+      subconfig.vm.network :private_network, nic_type: "virtio", ip: ha ? $NODE_IP_NW + "#{i + 10}" : $MASTER_IP, virtualbox__intnet: "node_network"
       subconfig.vm.provider :virtualbox do |vb|
         vb.customize ["modifyvm", :id, "--cpus", "2"]
         vb.customize ["modifyvm", :id, "--memory", "2048"]
@@ -51,7 +51,7 @@ Vagrant.configure("2") do |config|
   (1..$NODE_COUNT).each do |i|
     config.vm.define("node#{i}") do |subconfig|
       subconfig.vm.hostname = "node#{i}"
-      subconfig.vm.network :private_network, nic_type: "virtio", ip: $NODE_IP_NW + "#{i + 20}"
+      subconfig.vm.network :private_network, nic_type: "virtio", ip: $NODE_IP_NW + "#{i + 20}", virtualbox__intnet: "node_network"
 
       subconfig.vm.provision :shell, inline: $init_script
       subconfig.vm.provision :shell, inline: $node_script
