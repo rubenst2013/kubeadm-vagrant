@@ -136,8 +136,8 @@ if [ ${vrrp_state} = "MASTER" ]; then
 
   status "Provisioning default storageclass (NFS)..."
   mkdir -p /var/kubernetes/storage/dynamic/
-  kubectl apply -f /vagrant/nfs-provisioner.yml
-  kubectl apply -f /vagrant/nfs-storageclass.yml
+  kubectl apply -f /vagrant/nfs-provisioner.yaml
+  kubectl apply -f /vagrant/nfs-storageclass.yaml
 else
   status "joining master node.."
   discovery_token_ca_cert_hash="$(grep 'discovery-token-ca-cert-hash' /vagrant/kubeadm.log | head -n1 | awk '{print $2}')"
