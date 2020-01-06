@@ -3,6 +3,7 @@ require_relative 'lib/init_script'
 require_relative 'lib/ha_script'
 require_relative 'lib/master_script'
 require_relative 'lib/node_script'
+require_relative 'lib/load_balancer'
 
 Vagrant.configure("2") do |config|
   config.vm.box_check_update = false
@@ -31,6 +32,31 @@ Vagrant.configure("2") do |config|
 
   config.hostmanager.enabled = true
   config.hostmanager.manage_guest = true
+
+  (1..$PUBLIC_LOAD_BALANCER_COUNT).each do |i|
+    hostname= "load-balancer#{i}"
+    config.vm.define(hostname) do |subconfig|
+      subconfig.vm.hostname = hostname
+      subconfig.vm.network :private_network, nic_type: "virtio", ip: $NODE_IP_NW + "#{i + 90}", virtualbox__intnet: "node_network"
+      subconfig.vm.network :private_network, nic_type: "virtio", ip: $PUBLIC_LOAD_BALANCER_IP_NW + "#{i + 10}", virtualbox__intnet: false
+      subconfig.vm.provider :virtualbox do |vb|
+        vb.customize ["modifyvm", :id, "--cpus", "1"]
+        vb.customize ["modifyvm", :id, "--memory", "1536"]
+      end
+
+      subconfig.vm.provision "remove-microk8s", type: "shell", run: "once", inline: '''
+        #!/bin/bash
+
+        microk8s.stop
+        snap remove microk8s
+        ip a | grep -o "veth[a-z0-9]\+" | xargs -I[] sudo ip link delete []
+        sudo ip link delete flannel.1
+      '''
+
+      subconfig.vm.provision "load-balancer", type: "shell", run: "once", inline: $lb_script
+      #subconfig.vm.provision :shell, inline: ha ? $ha_script : $master_script
+    end
+  end
 
   (1..$MASTER_COUNT).each do |i|
     ha = $MASTER_COUNT > 1

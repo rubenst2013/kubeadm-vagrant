@@ -10,3 +10,7 @@ $DOCKER_VER = "5:19.03.5~3-0~ubuntu-bionic"
 $KUBE_VER   = "1.17.0"
 $KUBE_TOKEN = "ayngk7.m1555duk5x2i3ctt"
 $IMAGE_REPO = "k8s.gcr.io" # "registry.aliyuncs.com/google_containers"
+
+$PUBLIC_LOAD_BALANCER_COUNT = 2
+$PUBLIC_LOAD_BALANCER_IP_NW = "192.168.10."
+$PUBLIC_LOAD_BALANCER_IP    = "192.168.10.10"

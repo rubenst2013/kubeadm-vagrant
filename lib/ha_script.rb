@@ -104,7 +104,7 @@ listen kube-api-server
     option tcplog
     balance roundrobin
 
-#{gen_haproxy_backend($MASTER_COUNT)}
+#{gen_haproxy_master_backend($MASTER_COUNT)}
 EOF
 
 systemctl restart haproxy
