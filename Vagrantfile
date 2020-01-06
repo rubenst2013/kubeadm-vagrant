@@ -29,8 +29,6 @@ Vagrant.configure("2") do |config|
     vb.customize ["modifyvm", :id, "--vram", "128"]
   end
 
-  config.vm.provision :shell, inline: $init_script
-
   config.hostmanager.enabled = true
   config.hostmanager.manage_guest = true
 
@@ -44,6 +42,8 @@ Vagrant.configure("2") do |config|
         vb.customize ["modifyvm", :id, "--cpus", "2"]
         vb.customize ["modifyvm", :id, "--memory", "2048"]
       end
+      
+      subconfig.vm.provision :shell, inline: $init_script
       subconfig.vm.provision :shell, inline: ha ? $ha_script : $master_script
     end
   end
@@ -52,6 +52,8 @@ Vagrant.configure("2") do |config|
     config.vm.define("node#{i}") do |subconfig|
       subconfig.vm.hostname = "node#{i}"
       subconfig.vm.network :private_network, nic_type: "virtio", ip: $NODE_IP_NW + "#{i + 20}"
+
+      subconfig.vm.provision :shell, inline: $init_script
       subconfig.vm.provision :shell, inline: $node_script
     end
   end
