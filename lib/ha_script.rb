@@ -123,8 +123,8 @@ if [ ${vrrp_state} = "MASTER" ]; then
     \
     --kubernetes-version v#{$KUBE_VER} \
     --control-plane-endpoint "#{$MASTER_IP}:#{$MASTER_PORT}" \
-    --image-repository "k8s.gcr.io" \
-    --pod-network-cidr "10.244.0.0/16" \
+    --image-repository "#{$IMAGE_REPO}" \
+    --pod-network-cidr "#{$POD_NW_CIDR}" \
     | tee /vagrant/kubeadm.log
 
   mkdir -p $HOME/.kube
