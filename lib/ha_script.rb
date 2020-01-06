@@ -147,4 +147,7 @@ else
     --control-plane --certificate-key ${certificate_key} \
     --apiserver-advertise-address ${vrrp_ip}
 fi
+
+cp /etc/kubernetes/admin.conf /home/vagrant/.kube/config
+chown vagrant:vagrant /home/vagrant/.kube/config
 SCRIPT
