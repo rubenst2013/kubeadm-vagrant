@@ -53,6 +53,7 @@ vrrp_instance VI_1 {
     virtual_router_id 51
     priority ${vrrp_priority}
     advert_int 2
+    script_user root root
     authentication {
         auth_type PASS
         auth_pass a6E/CHhJkCn1Ww1gF3qPiJTKTEc=
