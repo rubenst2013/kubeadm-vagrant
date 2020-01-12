@@ -5,6 +5,8 @@ require_relative 'lib/master_script'
 require_relative 'lib/node_script'
 require_relative 'lib/load_balancer'
 
+current_dir    = File.dirname(File.expand_path(__FILE__))
+
 Vagrant.configure("2") do |config|
   config.vm.box_check_update = false
 
@@ -71,6 +73,8 @@ Vagrant.configure("2") do |config|
       
       subconfig.vm.provision "init", type: "shell", run: "once", inline: $init_script
       subconfig.vm.provision "master", type: "shell", run: "once", inline: ha ? $ha_script : $master_script
+
+      subconfig.vm.provision "hostpath", type: "shell", run: "once", path: "provisioning/hostpath.sh"
     end
   end
 
@@ -78,6 +82,32 @@ Vagrant.configure("2") do |config|
     config.vm.define("node#{i}") do |subconfig|
       subconfig.vm.hostname = "node#{i}"
       subconfig.vm.network :private_network, nic_type: "virtio", ip: $NODE_IP_NW + "#{i + 20}", virtualbox__intnet: "node_network"
+
+      subconfig.vm.provider :virtualbox do |vb|
+        disk = current_dir + "/local_storage_#{i}.vdi"
+        unless File.exist?(disk)
+          vb.customize [
+            "createmedium", "disk",
+            "--filename", disk,
+            "--size", 500 * 1024,
+            "--format", "vdi",
+            "--variant", "Standard"
+          ]
+        end
+        vb.customize [
+          "storageattach", :id,
+            "--storagectl", "SCSI Controller",
+            "--port", "5",
+            "--device", "0",
+            "--type", "hdd",
+            "--medium", disk,
+            "--mtype", "normal",
+            "--nonrotational", "on",
+            "--discard", "on"
+        ]
+      end
+
+      subconfig.vm.provision "lvm", type: "shell", run: "once", path: "provisioning/lvm.sh", keep_color: "true"
 
       subconfig.vm.provision "init", type: "shell", run: "once", inline: $init_script, keep_color: "true"
       subconfig.vm.provision "node", type: "shell", run: "once", inline: $node_script, keep_color: "true"
