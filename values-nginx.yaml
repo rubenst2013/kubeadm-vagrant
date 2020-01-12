@@ -28,7 +28,7 @@ controller:
     enabled: true
 
   scope:
-    enabled: true
+    enabled: false
     namespace: ""
 
   metrics:
@@ -58,8 +58,8 @@ controller:
 #    targetMemoryUtilizationPercentage: 50
 
   service:
-    enabled: false
+    enabled: true
     type: NodePort
-    externalTrafficPolicy: "Local"
+    externalTrafficPolicy: "Cluster"
     enableHttp: true
     enableHttps: true
