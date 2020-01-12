@@ -69,8 +69,8 @@ Vagrant.configure("2") do |config|
         vb.customize ["modifyvm", :id, "--memory", "2048"]
       end
       
-      subconfig.vm.provision :shell, inline: $init_script
-      subconfig.vm.provision :shell, inline: ha ? $ha_script : $master_script
+      subconfig.vm.provision "init", type: "shell", run: "once", inline: $init_script
+      subconfig.vm.provision "master", type: "shell", run: "once", inline: ha ? $ha_script : $master_script
     end
   end
 
@@ -79,8 +79,8 @@ Vagrant.configure("2") do |config|
       subconfig.vm.hostname = "node#{i}"
       subconfig.vm.network :private_network, nic_type: "virtio", ip: $NODE_IP_NW + "#{i + 20}", virtualbox__intnet: "node_network"
 
-      subconfig.vm.provision :shell, inline: $init_script
-      subconfig.vm.provision :shell, inline: $node_script
+      subconfig.vm.provision "init", type: "shell", run: "once", inline: $init_script, keep_color: "true"
+      subconfig.vm.provision "node", type: "shell", run: "once", inline: $node_script, keep_color: "true"
     end
   end
 end
