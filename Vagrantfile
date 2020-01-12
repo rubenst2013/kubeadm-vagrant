@@ -52,7 +52,7 @@ Vagrant.configure("2") do |config|
         microk8s.stop
         snap remove microk8s
         ip a | grep -o "veth[a-z0-9]\+" | xargs -I[] sudo ip link delete []
-        sudo ip link delete flannel.1
+        # sudo ip link delete flannel.1
       '''
 
       subconfig.vm.provision "load-balancer", type: "shell", run: "once", inline: $lb_script
