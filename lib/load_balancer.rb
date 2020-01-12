@@ -38,6 +38,7 @@ fi
 cat > /etc/keepalived/keepalived.conf <<EOF
 global_defs {
     router_id LVS_DEVEL
+    script_user root root
 }
 vrrp_script check_loadbalancer {
     script "/etc/keepalived/check_loadbalancer.sh"
@@ -53,7 +54,6 @@ vrrp_instance VI_1 {
     virtual_router_id 51
     priority ${vrrp_priority}
     advert_int 2
-    script_user root root
     authentication {
         auth_type PASS
         auth_pass a6E/CHhJkCn1Ww1gF3qPiJTKTEc=
@@ -81,6 +81,7 @@ if ip addr | grep -q #{$PUBLIC_LOAD_BALANCER_IP}; then
   ping -c 4 -w 2 -i 0.2 #{$PUBLIC_LOAD_BALANCER_IP} 2>&1 >/dev/null || errorExit "Error - Not reachable on public IP #{$PUBLIC_LOAD_BALANCER_IP}"
 fi
 EOF
+chmod 744 /etc/keepalived/check_loadbalancer.sh
 
 systemctl restart keepalived
 sleep 10
