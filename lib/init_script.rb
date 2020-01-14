@@ -5,9 +5,7 @@ $init_script = <<SCRIPT
 
 set -eo pipefail
 
-# Disable both microk8s and swap
-microk8s.stop
-snap remove microk8s
+# Disable swap as kubelet does not like it
 swapoff -a
 
 cat > /etc/sysctl.d/k8s.conf <<EOF

@@ -10,10 +10,7 @@ current_dir    = File.dirname(File.expand_path(__FILE__))
 Vagrant.configure("2") do |config|
   config.vm.box_check_update = false
 
-  config.vm.box = "rsteinbacher/ubuntu-server"
-  config.vm.box_version = "0.1.0-alpha.2"
-  config.vm.box_url = "https://nexus3-test.es.gk-software.com/nexus/repository/vagrant/boxes/custom/rsteinbacher/ubuntu-server/metadata.json"
-  config.vm.box_download_ca_cert = "certificates/GKRoot.crt"
+  config.vm.box = "ubuntu-server-without-microk8s"
 
   config.vm.boot_timeout = 600
 
@@ -46,17 +43,7 @@ Vagrant.configure("2") do |config|
         vb.customize ["modifyvm", :id, "--memory", "1536"]
       end
 
-      subconfig.vm.provision "remove-microk8s", type: "shell", run: "once", inline: '''
-        #!/bin/bash
-
-        microk8s.stop
-        snap remove microk8s
-        ip a | grep -o "veth[a-z0-9]\+" | xargs -I[] sudo ip link delete []
-        # sudo ip link delete flannel.1
-      '''
-
       subconfig.vm.provision "load-balancer", type: "shell", run: "once", inline: $lb_script
-      #subconfig.vm.provision :shell, inline: ha ? $ha_script : $master_script
     end
   end
 
