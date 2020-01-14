@@ -61,7 +61,9 @@ Vagrant.configure("2") do |config|
       subconfig.vm.provision "init", type: "shell", run: "once", inline: $init_script
       subconfig.vm.provision "master", type: "shell", run: "once", inline: ha ? $ha_script : $master_script
 
-      subconfig.vm.provision "hostpath", type: "shell", run: "once", path: "provisioning/hostpath.sh"
+      if hostname == "master#{ha ? 1: ''}"
+        subconfig.vm.provision "hostpath", type: "shell", run: "once", path: "provisioning/hostpath.sh"
+      end
     end
   end
 
