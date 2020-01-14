@@ -145,8 +145,12 @@ if [ ${vrrp_state} = "MASTER" ]; then
   cp /etc/kubernetes/admin.conf /home/vagrant/.kube/config
   chown vagrant:vagrant /home/vagrant/.kube/config
 
+  status "Install and prepare helm k8s package manager"
   snap install helm --classic
+  helm repo add stable https://kubernetes-charts.storage.googleapis.com/  #ToDo: Switch to helm hub in the future. https://helm.sh/blog/helm-v3-beta/
+  helm repo update
 
+  status "Register bash completion"
   echo 'source <(kubectl completion bash)' >> /etc/profile.d/k8s-tools.sh
   echo 'source <(helm completion bash)' >> /etc/profile.d/k8s-tools.sh
   
@@ -154,7 +158,7 @@ if [ ${vrrp_state} = "MASTER" ]; then
   kubectl apply -f /vagrant/kube-flannel.yml
 
   status "installing nginx ingress controller.."
-  helm install nginx-ingress /vagrant/nginx-ingress -f /vagrant/values-nginx.yaml
+  helm install nginx-ingress stable/nginx-ingress --version 1.28.1 -f /vagrant/values-nginx.yaml
 
   #status "Provisioning default storageclass (NFS)..."
   #mkdir -p /var/kubernetes/storage/dynamic/
