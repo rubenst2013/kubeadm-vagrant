@@ -7,7 +7,7 @@ cd ./csi-driver-host-path/
 
 # Install for currently installed k8s version
 pushd ./deploy/kubernetes-1.17/
-./deploy-hostpath.sh
+./deploy-hostpath.sh || true
 popd
 
 # Add storage class
