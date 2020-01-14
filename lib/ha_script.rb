@@ -126,18 +126,6 @@ if [ ${vrrp_state} = "MASTER" ]; then
     --image-repository "#{$IMAGE_REPO}" \
     --pod-network-cidr "#{$POD_NW_CIDR}" \
     | tee /vagrant/kubeadm.log
-
-  mkdir -p $HOME/.kube
-  sudo cp -Rf /etc/kubernetes/admin.conf $HOME/.kube/config
-  sudo chown $(id -u):$(id -g) $HOME/.kube/config
-  
-  status "installing flannel network addon.."
-  kubectl apply -f /vagrant/kube-flannel.yml
-
-  status "Provisioning default storageclass (NFS)..."
-  mkdir -p /var/kubernetes/storage/dynamic/
-  kubectl apply -f /vagrant/nfs-provisioner.yaml
-  kubectl apply -f /vagrant/nfs-storageclass.yaml
 else
   status "joining master node.."
   discovery_token_ca_cert_hash="$(grep 'discovery-token-ca-cert-hash' /vagrant/kubeadm.log | head -n1 | awk '{print $2}')"
@@ -148,6 +136,33 @@ else
     --apiserver-advertise-address ${vrrp_ip}
 fi
 
-cp /etc/kubernetes/admin.conf /home/vagrant/.kube/config
-chown vagrant:vagrant /home/vagrant/.kube/config
+status "installing additional tools for cluster operation..."
+if [ ${vrrp_state} = "MASTER" ]; then
+  mkdir -p $HOME/.kube
+  cp -Rf /etc/kubernetes/admin.conf $HOME/.kube/config
+  chown $(id -u):$(id -g) $HOME/.kube/config
+
+  cp /etc/kubernetes/admin.conf /home/vagrant/.kube/config
+  chown vagrant:vagrant /home/vagrant/.kube/config
+
+  snap install helm --classic
+
+  echo 'source <(kubectl completion bash)' >> /etc/profile.d/k8s-tools.sh
+  echo 'source <(helm completion bash)' >> /etc/profile.d/k8s-tools.sh
+  
+  status "installing flannel network addon.."
+  kubectl apply -f /vagrant/kube-flannel.yml
+
+  status "installing nginx ingress controller.."
+  helm install nginx-ingress /vagrant/nginx-ingress -f /vagrant/values-nginx.yaml
+
+  #status "Provisioning default storageclass (NFS)..."
+  #mkdir -p /var/kubernetes/storage/dynamic/
+  #kubectl apply -f /vagrant/nfs-provisioner.yaml
+  #kubectl apply -f /vagrant/nfs-storageclass.yaml
+else
+  true
+fi
+
+
 SCRIPT
