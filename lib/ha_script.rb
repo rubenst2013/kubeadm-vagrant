@@ -153,17 +153,6 @@ if [ ${vrrp_state} = "MASTER" ]; then
   status "Register bash completion"
   echo 'source <(kubectl completion bash)' >> /etc/profile.d/k8s-tools.sh
   echo 'source <(helm completion bash)' >> /etc/profile.d/k8s-tools.sh
-  
-  status "installing flannel network addon.."
-  kubectl apply -f /vagrant/kube-flannel.yml
-
-  status "installing nginx ingress controller.."
-  helm install nginx-ingress stable/nginx-ingress --version 1.28.1 -f /vagrant/values-nginx.yaml
-
-  #status "Provisioning default storageclass (NFS)..."
-  #mkdir -p /var/kubernetes/storage/dynamic/
-  #kubectl apply -f /vagrant/nfs-provisioner.yaml
-  #kubectl apply -f /vagrant/nfs-storageclass.yaml
 else
   true
 fi

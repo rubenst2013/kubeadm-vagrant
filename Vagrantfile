@@ -62,7 +62,12 @@ Vagrant.configure("2") do |config|
       subconfig.vm.provision "master", type: "shell", run: "once", inline: ha ? $ha_script : $master_script
 
       if hostname == "master#{ha ? 1: ''}"
-        subconfig.vm.provision "hostpath", type: "shell", run: "once", path: "provisioning/hostpath.sh"
+        #subconfig.vm.provision "cni-flannel",               type: "shell", run: "once", path: "provisioning/cni/flannel/provision.sh"
+        subconfig.vm.provision "cni-weave",                 type: "shell", run: "once", path: "provisioning/cni/weave/provision.sh"
+        subconfig.vm.provision "csi-external-snapshotter",  type: "shell", run: "once", path: "provisioning/csi/external-snapshotter.sh"
+
+        subconfig.vm.provision "csi-driver-host-path",      type: "shell", run: "never", path: "provisioning/csi/driver-host-path.sh"
+        subconfig.vm.provision "cni-nginx-ingress",         type: "shell", run: "never", path: "provisioning/cni/nginx/provision.sh"
       end
     end
   end
