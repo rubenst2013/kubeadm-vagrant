@@ -66,6 +66,7 @@ Vagrant.configure("2") do |config|
         subconfig.vm.provision "cni-weave",                 type: "shell", run: "once", path: "provisioning/cni/weave/provision.sh"
         subconfig.vm.provision "csi-external-snapshotter",  type: "shell", run: "once", path: "provisioning/csi/external-snapshotter.sh"
 
+        # Once vagrant has finished provisioning your environment, run these commands against master1 manually
         subconfig.vm.provision "csi-driver-host-path",      type: "shell", run: "never", path: "provisioning/csi/driver-host-path.sh"
         subconfig.vm.provision "cni-nginx-ingress",         type: "shell", run: "never", path: "provisioning/cni/nginx/provision.sh"
       end
