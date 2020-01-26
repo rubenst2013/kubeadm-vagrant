@@ -7,6 +7,7 @@ set -eo pipefail
 
 # Disable swap as kubelet does not like it
 swapoff -a
+sed -i -E 's/(.*swap.*)/# \1/' /etc/fstab
 
 cat > /etc/sysctl.d/k8s.conf <<EOF
 net.bridge.bridge-nf-call-ip6tables = 1
