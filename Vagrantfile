@@ -32,6 +32,11 @@ Vagrant.configure("2") do |config|
   config.hostmanager.enabled = true
   config.hostmanager.manage_guest = true
 
+  config.vm.synced_folder ".", "/vagrant", id: "vagrant-root",
+    owner: "vagrant",
+    group: "vagrant",
+    mount_options: ["dmode=775,fmode=664"]
+
   (1..$PUBLIC_LOAD_BALANCER_COUNT).each do |i|
     hostname= "load-balancer#{i}"
     config.vm.define(hostname) do |subconfig|
