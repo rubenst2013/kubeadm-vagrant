@@ -113,4 +113,17 @@ Vagrant.configure("2") do |config|
       subconfig.vm.provision "node", type: "shell", run: "once", inline: $node_script, keep_color: "true"
     end
   end
+
+  config.vm.provision "hello-ansible", type: "ansible_local" do |ansible|
+    ansible.playbook = "playbook.yml"
+    ansible.verbose = true
+    ansible.become = true
+    ansible.groups = {
+      "loadbalancers" => ["load-balancer1", "load-balancer2"],
+      "nodes" => ["master1", "master2", "master3", "node1", "node2"],
+      "masters" => ["master1", "master2", "master3"],
+      "workers" => ["node1", "node2"]
+    }
+    ansible.limit = "loadbalancers"
+  end
 end
