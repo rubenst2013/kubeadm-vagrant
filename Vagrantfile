@@ -118,12 +118,17 @@ Vagrant.configure("2") do |config|
     ansible.playbook = "playbook.yml"
     ansible.verbose = true
     ansible.become = true
-    ansible.groups = {
-      "loadbalancers" => ["load-balancer1", "load-balancer2"],
-      "nodes" => ["master1", "master2", "master3", "node1", "node2"],
-      "masters" => ["master1", "master2", "master3"],
-      "workers" => ["node1", "node2"]
-    }
-    ansible.limit = "loadbalancers"
+    ## Gropus and limits in the context of an ansible_local provisioner only make sense 
+    ## when applied to a control server which has SSH access to the other nodes.
+    ## Acible needs SSH keys to be present for the target nodes.
+    ## This is only the case for each node; for the node itself.
+    ## That's why the provisioenr fails for nodes other than 'self'
+#    ansible.groups = {
+#      "loadbalancers" => ["load-balancer1", "load-balancer2"],
+#      "nodes" => ["master1", "master2", "master3", "node1", "node2"],
+#      "masters" => ["master1", "master2", "master3"],
+#      "workers" => ["node1", "node2"]
+#    }
+#    ansible.limit = "loadbalancers"
   end
 end
