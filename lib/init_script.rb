@@ -27,7 +27,7 @@ apt-get update && apt-get install -y \
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 cat > /etc/apt/sources.list.d/docker-ce.list <<EOF
-deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
+deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
 EOF
 apt-get update && apt-get install -y docker-ce=#{$DOCKER_VER}
 
@@ -35,7 +35,7 @@ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
 deb https://apt.kubernetes.io/ kubernetes-xenial main
 EOF
-apt-get update && apt-get install -y kubelet=#{$KUBE_VER}-00 kubeadm kubectl kubernetes-cni=0.7.5-00
+apt-get update && apt-get install -y kubelet=#{$KUBE_VER}-00 kubeadm kubectl
 
 cat > /etc/docker/daemon.json <<EOF
 {
