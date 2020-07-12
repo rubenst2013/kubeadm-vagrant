@@ -1,13 +1,17 @@
 #!/bin/bash -eu
 
-cd /home/vagrant/
+pushd /home/vagrant/
 
-# Download official git repo for CSI External Snapshotter
-git clone https://github.com/kubernetes-csi/external-snapshotter.git --branch master --depth 1
-pushd external-snapshotter
+# Change to the latest supported snapshotter version
+SNAPSHOTTER_VERSION=v2.1.1
 
-# Install Config
-kubectl create -f config/crd/
+# Apply VolumeSnapshot CRDs
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/${SNAPSHOTTER_VERSION}/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/${SNAPSHOTTER_VERSION}/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/${SNAPSHOTTER_VERSION}/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml
 
-# Install CRDs
-kubectl create -f deploy/kubernetes/snapshot-controller/
+# Create snapshot controller
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/${SNAPSHOTTER_VERSION}/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/${SNAPSHOTTER_VERSION}/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
+
+popd
