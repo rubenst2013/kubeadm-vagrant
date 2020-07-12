@@ -6,8 +6,8 @@ git clone --branch master --depth 1 https://github.com/kubernetes-csi/csi-driver
 cd ./csi-driver-host-path/
 
 # Install for currently installed k8s version
-pushd ./deploy/kubernetes-1.17/
-./deploy-hostpath.sh || true
+pushd ./deploy/kubernetes-1.18/
+./deploy.sh || true
 popd
 
 # Add storage class
