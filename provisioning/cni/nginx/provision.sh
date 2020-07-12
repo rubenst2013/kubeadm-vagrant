@@ -2,6 +2,6 @@
 
 pushd /vagrant/provisioning/cni/nginx/
 
-helm install nginx-ingress stable/nginx-ingress --version 1.29.2 -f values-nginx.yaml
+helm upgrade --install nginx-ingress stable/nginx-ingress --version 1.40.0 -f values-nginx.yaml
 
 popd
