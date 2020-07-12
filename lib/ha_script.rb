@@ -145,6 +145,7 @@ if [ ${vrrp_state} = "MASTER" ]; then
   cp -Rf /etc/kubernetes/admin.conf $HOME/.kube/config
   chown $(id -u):$(id -g) $HOME/.kube/config
 
+  mkdir -p /home/vagrant/.kube
   cp /etc/kubernetes/admin.conf /home/vagrant/.kube/config
   chown vagrant:vagrant /home/vagrant/.kube/config
 
