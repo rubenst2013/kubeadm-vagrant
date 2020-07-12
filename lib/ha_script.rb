@@ -28,6 +28,8 @@ fi
 cat > /etc/keepalived/keepalived.conf <<EOF
 global_defs {
     router_id LVS_DEVEL
+    enable_script_security
+    script_user root root
 }
 vrrp_script check_apiserver {
     script "/etc/keepalived/check_apiserver.sh"
@@ -69,6 +71,7 @@ if ip addr | grep -q #{$MASTER_IP}; then
   curl --silent --max-time 2 --insecure https://#{$MASTER_IP}:#{$MASTER_PORT}/ -o /dev/null || errorExit "Error GET https://#{$MASTER_IP}:#{$MASTER_PORT}/"
 fi
 EOF
+chmod 744 /etc/keepalived/check_apiserver.sh
 
 systemctl restart keepalived
 sleep 10

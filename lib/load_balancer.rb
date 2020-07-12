@@ -38,6 +38,7 @@ fi
 cat > /etc/keepalived/keepalived.conf <<EOF
 global_defs {
     router_id LVS_DEVEL
+    enable_script_security
     script_user root root
 }
 vrrp_script check_loadbalancer {
