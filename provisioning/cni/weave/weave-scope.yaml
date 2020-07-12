@@ -6,7 +6,7 @@ items:
     metadata:
       name: weave
       annotations:
-        cloud.weave.works/version: v1.0.0-266-gbda94bc
+        cloud.weave.works/version: v1.0.0-279-g7a5fd2f
   - apiVersion: v1
     kind: ServiceAccount
     metadata:
@@ -15,8 +15,8 @@ items:
         cloud.weave.works/launcher-info: |-
           {
             "original-request": {
-              "url": "/k8s/v1.16/scope.yaml?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIxNyIsIEdpdFZlcnNpb246InYxLjE3LjEiLCBHaXRDb21taXQ6ImQyMjQ0NzZjZDA3MzBiYWNhMmI2ZTM1N2QxNDQxNzFlZDc0MTkyZDYiLCBHaXRUcmVlU3RhdGU6ImNsZWFuIiwgQnVpbGREYXRlOiIyMDIwLTAxLTE0VDIxOjA0OjMyWiIsIEdvVmVyc2lvbjoiZ28xLjEzLjUiLCBDb21waWxlcjoiZ2MiLCBQbGF0Zm9ybToibGludXgvYW1kNjQifQpTZXJ2ZXIgVmVyc2lvbjogdmVyc2lvbi5JbmZve01ham9yOiIxIiwgTWlub3I6IjE3IiwgR2l0VmVyc2lvbjoidjEuMTcuMCIsIEdpdENvbW1pdDoiNzAxMzJiMGYxMzBhY2MwYmVkMTkzZDliYTU5ZGQxODZmMGU2MzRjZiIsIEdpdFRyZWVTdGF0ZToiY2xlYW4iLCBCdWlsZERhdGU6IjIwMTktMTItMDdUMjE6MTI6MTdaIiwgR29WZXJzaW9uOiJnbzEuMTMuNCIsIENvbXBpbGVyOiJnYyIsIFBsYXRmb3JtOiJsaW51eC9hbWQ2NCJ9Cg==&k8s-service-type=NodePort",
-              "date": "Fri Jan 17 2020 13:00:15 GMT+0000 (UTC)"
+              "url": "/k8s/v1.16/scope.yaml?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIxOCIsIEdpdFZlcnNpb246InYxLjE4LjUiLCBHaXRDb21taXQ6ImU2NTAzZjhkOGY3NjlhY2UyZjMzODc5NGM5MTRhOTZmYzMzNWRmMGYiLCBHaXRUcmVlU3RhdGU6ImNsZWFuIiwgQnVpbGREYXRlOiIyMDIwLTA2LTI2VDAzOjQ3OjQxWiIsIEdvVmVyc2lvbjoiZ28xLjEzLjkiLCBDb21waWxlcjoiZ2MiLCBQbGF0Zm9ybToibGludXgvYW1kNjQifQpTZXJ2ZXIgVmVyc2lvbjogdmVyc2lvbi5JbmZve01ham9yOiIxIiwgTWlub3I6IjE4IiwgR2l0VmVyc2lvbjoidjEuMTguNSIsIEdpdENvbW1pdDoiZTY1MDNmOGQ4Zjc2OWFjZTJmMzM4Nzk0YzkxNGE5NmZjMzM1ZGYwZiIsIEdpdFRyZWVTdGF0ZToiY2xlYW4iLCBCdWlsZERhdGU6IjIwMjAtMDYtMjZUMDM6Mzk6MjRaIiwgR29WZXJzaW9uOiJnbzEuMTMuOSIsIENvbXBpbGVyOiJnYyIsIFBsYXRmb3JtOiJsaW51eC9hbWQ2NCJ9Cg==&k8s-service-type=NodePort",
+              "date": "Fri Jul 10 2020 18:06:57 GMT+0000 (UTC)"
             },
             "email-address": "support@weave.works"
           }
@@ -31,8 +31,8 @@ items:
         cloud.weave.works/launcher-info: |-
           {
             "original-request": {
-              "url": "/k8s/v1.16/scope.yaml?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIxNyIsIEdpdFZlcnNpb246InYxLjE3LjEiLCBHaXRDb21taXQ6ImQyMjQ0NzZjZDA3MzBiYWNhMmI2ZTM1N2QxNDQxNzFlZDc0MTkyZDYiLCBHaXRUcmVlU3RhdGU6ImNsZWFuIiwgQnVpbGREYXRlOiIyMDIwLTAxLTE0VDIxOjA0OjMyWiIsIEdvVmVyc2lvbjoiZ28xLjEzLjUiLCBDb21waWxlcjoiZ2MiLCBQbGF0Zm9ybToibGludXgvYW1kNjQifQpTZXJ2ZXIgVmVyc2lvbjogdmVyc2lvbi5JbmZve01ham9yOiIxIiwgTWlub3I6IjE3IiwgR2l0VmVyc2lvbjoidjEuMTcuMCIsIEdpdENvbW1pdDoiNzAxMzJiMGYxMzBhY2MwYmVkMTkzZDliYTU5ZGQxODZmMGU2MzRjZiIsIEdpdFRyZWVTdGF0ZToiY2xlYW4iLCBCdWlsZERhdGU6IjIwMTktMTItMDdUMjE6MTI6MTdaIiwgR29WZXJzaW9uOiJnbzEuMTMuNCIsIENvbXBpbGVyOiJnYyIsIFBsYXRmb3JtOiJsaW51eC9hbWQ2NCJ9Cg==&k8s-service-type=NodePort",
-              "date": "Fri Jan 17 2020 13:00:15 GMT+0000 (UTC)"
+              "url": "/k8s/v1.16/scope.yaml?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIxOCIsIEdpdFZlcnNpb246InYxLjE4LjUiLCBHaXRDb21taXQ6ImU2NTAzZjhkOGY3NjlhY2UyZjMzODc5NGM5MTRhOTZmYzMzNWRmMGYiLCBHaXRUcmVlU3RhdGU6ImNsZWFuIiwgQnVpbGREYXRlOiIyMDIwLTA2LTI2VDAzOjQ3OjQxWiIsIEdvVmVyc2lvbjoiZ28xLjEzLjkiLCBDb21waWxlcjoiZ2MiLCBQbGF0Zm9ybToibGludXgvYW1kNjQifQpTZXJ2ZXIgVmVyc2lvbjogdmVyc2lvbi5JbmZve01ham9yOiIxIiwgTWlub3I6IjE4IiwgR2l0VmVyc2lvbjoidjEuMTguNSIsIEdpdENvbW1pdDoiZTY1MDNmOGQ4Zjc2OWFjZTJmMzM4Nzk0YzkxNGE5NmZjMzM1ZGYwZiIsIEdpdFRyZWVTdGF0ZToiY2xlYW4iLCBCdWlsZERhdGU6IjIwMjAtMDYtMjZUMDM6Mzk6MjRaIiwgR29WZXJzaW9uOiJnbzEuMTMuOSIsIENvbXBpbGVyOiJnYyIsIFBsYXRmb3JtOiJsaW51eC9hbWQ2NCJ9Cg==&k8s-service-type=NodePort",
+              "date": "Fri Jul 10 2020 18:06:57 GMT+0000 (UTC)"
             },
             "email-address": "support@weave.works"
           }
@@ -127,8 +127,8 @@ items:
         cloud.weave.works/launcher-info: |-
           {
             "original-request": {
-              "url": "/k8s/v1.16/scope.yaml?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIxNyIsIEdpdFZlcnNpb246InYxLjE3LjEiLCBHaXRDb21taXQ6ImQyMjQ0NzZjZDA3MzBiYWNhMmI2ZTM1N2QxNDQxNzFlZDc0MTkyZDYiLCBHaXRUcmVlU3RhdGU6ImNsZWFuIiwgQnVpbGREYXRlOiIyMDIwLTAxLTE0VDIxOjA0OjMyWiIsIEdvVmVyc2lvbjoiZ28xLjEzLjUiLCBDb21waWxlcjoiZ2MiLCBQbGF0Zm9ybToibGludXgvYW1kNjQifQpTZXJ2ZXIgVmVyc2lvbjogdmVyc2lvbi5JbmZve01ham9yOiIxIiwgTWlub3I6IjE3IiwgR2l0VmVyc2lvbjoidjEuMTcuMCIsIEdpdENvbW1pdDoiNzAxMzJiMGYxMzBhY2MwYmVkMTkzZDliYTU5ZGQxODZmMGU2MzRjZiIsIEdpdFRyZWVTdGF0ZToiY2xlYW4iLCBCdWlsZERhdGU6IjIwMTktMTItMDdUMjE6MTI6MTdaIiwgR29WZXJzaW9uOiJnbzEuMTMuNCIsIENvbXBpbGVyOiJnYyIsIFBsYXRmb3JtOiJsaW51eC9hbWQ2NCJ9Cg==&k8s-service-type=NodePort",
-              "date": "Fri Jan 17 2020 13:00:15 GMT+0000 (UTC)"
+              "url": "/k8s/v1.16/scope.yaml?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIxOCIsIEdpdFZlcnNpb246InYxLjE4LjUiLCBHaXRDb21taXQ6ImU2NTAzZjhkOGY3NjlhY2UyZjMzODc5NGM5MTRhOTZmYzMzNWRmMGYiLCBHaXRUcmVlU3RhdGU6ImNsZWFuIiwgQnVpbGREYXRlOiIyMDIwLTA2LTI2VDAzOjQ3OjQxWiIsIEdvVmVyc2lvbjoiZ28xLjEzLjkiLCBDb21waWxlcjoiZ2MiLCBQbGF0Zm9ybToibGludXgvYW1kNjQifQpTZXJ2ZXIgVmVyc2lvbjogdmVyc2lvbi5JbmZve01ham9yOiIxIiwgTWlub3I6IjE4IiwgR2l0VmVyc2lvbjoidjEuMTguNSIsIEdpdENvbW1pdDoiZTY1MDNmOGQ4Zjc2OWFjZTJmMzM4Nzk0YzkxNGE5NmZjMzM1ZGYwZiIsIEdpdFRyZWVTdGF0ZToiY2xlYW4iLCBCdWlsZERhdGU6IjIwMjAtMDYtMjZUMDM6Mzk6MjRaIiwgR29WZXJzaW9uOiJnbzEuMTMuOSIsIENvbXBpbGVyOiJnYyIsIFBsYXRmb3JtOiJsaW51eC9hbWQ2NCJ9Cg==&k8s-service-type=NodePort",
+              "date": "Fri Jul 10 2020 18:06:57 GMT+0000 (UTC)"
             },
             "email-address": "support@weave.works"
           }
@@ -150,8 +150,8 @@ items:
         cloud.weave.works/launcher-info: |-
           {
             "original-request": {
-              "url": "/k8s/v1.16/scope.yaml?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIxNyIsIEdpdFZlcnNpb246InYxLjE3LjEiLCBHaXRDb21taXQ6ImQyMjQ0NzZjZDA3MzBiYWNhMmI2ZTM1N2QxNDQxNzFlZDc0MTkyZDYiLCBHaXRUcmVlU3RhdGU6ImNsZWFuIiwgQnVpbGREYXRlOiIyMDIwLTAxLTE0VDIxOjA0OjMyWiIsIEdvVmVyc2lvbjoiZ28xLjEzLjUiLCBDb21waWxlcjoiZ2MiLCBQbGF0Zm9ybToibGludXgvYW1kNjQifQpTZXJ2ZXIgVmVyc2lvbjogdmVyc2lvbi5JbmZve01ham9yOiIxIiwgTWlub3I6IjE3IiwgR2l0VmVyc2lvbjoidjEuMTcuMCIsIEdpdENvbW1pdDoiNzAxMzJiMGYxMzBhY2MwYmVkMTkzZDliYTU5ZGQxODZmMGU2MzRjZiIsIEdpdFRyZWVTdGF0ZToiY2xlYW4iLCBCdWlsZERhdGU6IjIwMTktMTItMDdUMjE6MTI6MTdaIiwgR29WZXJzaW9uOiJnbzEuMTMuNCIsIENvbXBpbGVyOiJnYyIsIFBsYXRmb3JtOiJsaW51eC9hbWQ2NCJ9Cg==&k8s-service-type=NodePort",
-              "date": "Fri Jan 17 2020 13:00:15 GMT+0000 (UTC)"
+              "url": "/k8s/v1.16/scope.yaml?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIxOCIsIEdpdFZlcnNpb246InYxLjE4LjUiLCBHaXRDb21taXQ6ImU2NTAzZjhkOGY3NjlhY2UyZjMzODc5NGM5MTRhOTZmYzMzNWRmMGYiLCBHaXRUcmVlU3RhdGU6ImNsZWFuIiwgQnVpbGREYXRlOiIyMDIwLTA2LTI2VDAzOjQ3OjQxWiIsIEdvVmVyc2lvbjoiZ28xLjEzLjkiLCBDb21waWxlcjoiZ2MiLCBQbGF0Zm9ybToibGludXgvYW1kNjQifQpTZXJ2ZXIgVmVyc2lvbjogdmVyc2lvbi5JbmZve01ham9yOiIxIiwgTWlub3I6IjE4IiwgR2l0VmVyc2lvbjoidjEuMTguNSIsIEdpdENvbW1pdDoiZTY1MDNmOGQ4Zjc2OWFjZTJmMzM4Nzk0YzkxNGE5NmZjMzM1ZGYwZiIsIEdpdFRyZWVTdGF0ZToiY2xlYW4iLCBCdWlsZERhdGU6IjIwMjAtMDYtMjZUMDM6Mzk6MjRaIiwgR29WZXJzaW9uOiJnbzEuMTMuOSIsIENvbXBpbGVyOiJnYyIsIFBsYXRmb3JtOiJsaW51eC9hbWQ2NCJ9Cg==&k8s-service-type=NodePort",
+              "date": "Fri Jul 10 2020 18:06:57 GMT+0000 (UTC)"
             },
             "email-address": "support@weave.works"
           }
@@ -185,7 +185,7 @@ items:
               command:
                 - /home/weave/scope
               env: []
-              image: 'docker.io/weaveworks/scope:1.12.0'
+              image: 'docker.io/weaveworks/scope:1.13.1'
               imagePullPolicy: IfNotPresent
               ports:
                 - containerPort: 4040
@@ -198,8 +198,8 @@ items:
         cloud.weave.works/launcher-info: |-
           {
             "original-request": {
-              "url": "/k8s/v1.16/scope.yaml?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIxNyIsIEdpdFZlcnNpb246InYxLjE3LjEiLCBHaXRDb21taXQ6ImQyMjQ0NzZjZDA3MzBiYWNhMmI2ZTM1N2QxNDQxNzFlZDc0MTkyZDYiLCBHaXRUcmVlU3RhdGU6ImNsZWFuIiwgQnVpbGREYXRlOiIyMDIwLTAxLTE0VDIxOjA0OjMyWiIsIEdvVmVyc2lvbjoiZ28xLjEzLjUiLCBDb21waWxlcjoiZ2MiLCBQbGF0Zm9ybToibGludXgvYW1kNjQifQpTZXJ2ZXIgVmVyc2lvbjogdmVyc2lvbi5JbmZve01ham9yOiIxIiwgTWlub3I6IjE3IiwgR2l0VmVyc2lvbjoidjEuMTcuMCIsIEdpdENvbW1pdDoiNzAxMzJiMGYxMzBhY2MwYmVkMTkzZDliYTU5ZGQxODZmMGU2MzRjZiIsIEdpdFRyZWVTdGF0ZToiY2xlYW4iLCBCdWlsZERhdGU6IjIwMTktMTItMDdUMjE6MTI6MTdaIiwgR29WZXJzaW9uOiJnbzEuMTMuNCIsIENvbXBpbGVyOiJnYyIsIFBsYXRmb3JtOiJsaW51eC9hbWQ2NCJ9Cg==&k8s-service-type=NodePort",
-              "date": "Fri Jan 17 2020 13:00:15 GMT+0000 (UTC)"
+              "url": "/k8s/v1.16/scope.yaml?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIxOCIsIEdpdFZlcnNpb246InYxLjE4LjUiLCBHaXRDb21taXQ6ImU2NTAzZjhkOGY3NjlhY2UyZjMzODc5NGM5MTRhOTZmYzMzNWRmMGYiLCBHaXRUcmVlU3RhdGU6ImNsZWFuIiwgQnVpbGREYXRlOiIyMDIwLTA2LTI2VDAzOjQ3OjQxWiIsIEdvVmVyc2lvbjoiZ28xLjEzLjkiLCBDb21waWxlcjoiZ2MiLCBQbGF0Zm9ybToibGludXgvYW1kNjQifQpTZXJ2ZXIgVmVyc2lvbjogdmVyc2lvbi5JbmZve01ham9yOiIxIiwgTWlub3I6IjE4IiwgR2l0VmVyc2lvbjoidjEuMTguNSIsIEdpdENvbW1pdDoiZTY1MDNmOGQ4Zjc2OWFjZTJmMzM4Nzk0YzkxNGE5NmZjMzM1ZGYwZiIsIEdpdFRyZWVTdGF0ZToiY2xlYW4iLCBCdWlsZERhdGU6IjIwMjAtMDYtMjZUMDM6Mzk6MjRaIiwgR29WZXJzaW9uOiJnbzEuMTMuOSIsIENvbXBpbGVyOiJnYyIsIFBsYXRmb3JtOiJsaW51eC9hbWQ2NCJ9Cg==&k8s-service-type=NodePort",
+              "date": "Fri Jul 10 2020 18:06:57 GMT+0000 (UTC)"
             },
             "email-address": "support@weave.works"
           }
@@ -229,8 +229,8 @@ items:
         cloud.weave.works/launcher-info: |-
           {
             "original-request": {
-              "url": "/k8s/v1.16/scope.yaml?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIxNyIsIEdpdFZlcnNpb246InYxLjE3LjEiLCBHaXRDb21taXQ6ImQyMjQ0NzZjZDA3MzBiYWNhMmI2ZTM1N2QxNDQxNzFlZDc0MTkyZDYiLCBHaXRUcmVlU3RhdGU6ImNsZWFuIiwgQnVpbGREYXRlOiIyMDIwLTAxLTE0VDIxOjA0OjMyWiIsIEdvVmVyc2lvbjoiZ28xLjEzLjUiLCBDb21waWxlcjoiZ2MiLCBQbGF0Zm9ybToibGludXgvYW1kNjQifQpTZXJ2ZXIgVmVyc2lvbjogdmVyc2lvbi5JbmZve01ham9yOiIxIiwgTWlub3I6IjE3IiwgR2l0VmVyc2lvbjoidjEuMTcuMCIsIEdpdENvbW1pdDoiNzAxMzJiMGYxMzBhY2MwYmVkMTkzZDliYTU5ZGQxODZmMGU2MzRjZiIsIEdpdFRyZWVTdGF0ZToiY2xlYW4iLCBCdWlsZERhdGU6IjIwMTktMTItMDdUMjE6MTI6MTdaIiwgR29WZXJzaW9uOiJnbzEuMTMuNCIsIENvbXBpbGVyOiJnYyIsIFBsYXRmb3JtOiJsaW51eC9hbWQ2NCJ9Cg==&k8s-service-type=NodePort",
-              "date": "Fri Jan 17 2020 13:00:15 GMT+0000 (UTC)"
+              "url": "/k8s/v1.16/scope.yaml?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIxOCIsIEdpdFZlcnNpb246InYxLjE4LjUiLCBHaXRDb21taXQ6ImU2NTAzZjhkOGY3NjlhY2UyZjMzODc5NGM5MTRhOTZmYzMzNWRmMGYiLCBHaXRUcmVlU3RhdGU6ImNsZWFuIiwgQnVpbGREYXRlOiIyMDIwLTA2LTI2VDAzOjQ3OjQxWiIsIEdvVmVyc2lvbjoiZ28xLjEzLjkiLCBDb21waWxlcjoiZ2MiLCBQbGF0Zm9ybToibGludXgvYW1kNjQifQpTZXJ2ZXIgVmVyc2lvbjogdmVyc2lvbi5JbmZve01ham9yOiIxIiwgTWlub3I6IjE4IiwgR2l0VmVyc2lvbjoidjEuMTguNSIsIEdpdENvbW1pdDoiZTY1MDNmOGQ4Zjc2OWFjZTJmMzM4Nzk0YzkxNGE5NmZjMzM1ZGYwZiIsIEdpdFRyZWVTdGF0ZToiY2xlYW4iLCBCdWlsZERhdGU6IjIwMjAtMDYtMjZUMDM6Mzk6MjRaIiwgR29WZXJzaW9uOiJnbzEuMTMuOSIsIENvbXBpbGVyOiJnYyIsIFBsYXRmb3JtOiJsaW51eC9hbWQ2NCJ9Cg==&k8s-service-type=NodePort",
+              "date": "Fri Jul 10 2020 18:06:57 GMT+0000 (UTC)"
             },
             "email-address": "support@weave.works"
           }
@@ -270,12 +270,14 @@ items:
               command:
                 - /home/weave/scope
               env: []
-              image: 'docker.io/weaveworks/scope:1.12.0'
+              image: 'docker.io/weaveworks/scope:1.13.1'
               imagePullPolicy: IfNotPresent
               ports:
                 - containerPort: 4041
                   protocol: TCP
               resources:
+                limits:
+                  memory: 2000Mi
                 requests:
                   cpu: 25m
                   memory: 80Mi
@@ -288,8 +290,8 @@ items:
         cloud.weave.works/launcher-info: |-
           {
             "original-request": {
-              "url": "/k8s/v1.16/scope.yaml?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIxNyIsIEdpdFZlcnNpb246InYxLjE3LjEiLCBHaXRDb21taXQ6ImQyMjQ0NzZjZDA3MzBiYWNhMmI2ZTM1N2QxNDQxNzFlZDc0MTkyZDYiLCBHaXRUcmVlU3RhdGU6ImNsZWFuIiwgQnVpbGREYXRlOiIyMDIwLTAxLTE0VDIxOjA0OjMyWiIsIEdvVmVyc2lvbjoiZ28xLjEzLjUiLCBDb21waWxlcjoiZ2MiLCBQbGF0Zm9ybToibGludXgvYW1kNjQifQpTZXJ2ZXIgVmVyc2lvbjogdmVyc2lvbi5JbmZve01ham9yOiIxIiwgTWlub3I6IjE3IiwgR2l0VmVyc2lvbjoidjEuMTcuMCIsIEdpdENvbW1pdDoiNzAxMzJiMGYxMzBhY2MwYmVkMTkzZDliYTU5ZGQxODZmMGU2MzRjZiIsIEdpdFRyZWVTdGF0ZToiY2xlYW4iLCBCdWlsZERhdGU6IjIwMTktMTItMDdUMjE6MTI6MTdaIiwgR29WZXJzaW9uOiJnbzEuMTMuNCIsIENvbXBpbGVyOiJnYyIsIFBsYXRmb3JtOiJsaW51eC9hbWQ2NCJ9Cg==&k8s-service-type=NodePort",
-              "date": "Fri Jan 17 2020 13:00:15 GMT+0000 (UTC)"
+              "url": "/k8s/v1.16/scope.yaml?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIxOCIsIEdpdFZlcnNpb246InYxLjE4LjUiLCBHaXRDb21taXQ6ImU2NTAzZjhkOGY3NjlhY2UyZjMzODc5NGM5MTRhOTZmYzMzNWRmMGYiLCBHaXRUcmVlU3RhdGU6ImNsZWFuIiwgQnVpbGREYXRlOiIyMDIwLTA2LTI2VDAzOjQ3OjQxWiIsIEdvVmVyc2lvbjoiZ28xLjEzLjkiLCBDb21waWxlcjoiZ2MiLCBQbGF0Zm9ybToibGludXgvYW1kNjQifQpTZXJ2ZXIgVmVyc2lvbjogdmVyc2lvbi5JbmZve01ham9yOiIxIiwgTWlub3I6IjE4IiwgR2l0VmVyc2lvbjoidjEuMTguNSIsIEdpdENvbW1pdDoiZTY1MDNmOGQ4Zjc2OWFjZTJmMzM4Nzk0YzkxNGE5NmZjMzM1ZGYwZiIsIEdpdFRyZWVTdGF0ZToiY2xlYW4iLCBCdWlsZERhdGU6IjIwMjAtMDYtMjZUMDM6Mzk6MjRaIiwgR29WZXJzaW9uOiJnbzEuMTMuOSIsIENvbXBpbGVyOiJnYyIsIFBsYXRmb3JtOiJsaW51eC9hbWQ2NCJ9Cg==&k8s-service-type=NodePort",
+              "date": "Fri Jul 10 2020 18:06:57 GMT+0000 (UTC)"
             },
             "email-address": "support@weave.works"
           }
@@ -329,9 +331,11 @@ items:
               command:
                 - /home/weave/scope
               env: []
-              image: 'docker.io/weaveworks/scope:1.12.0'
+              image: 'docker.io/weaveworks/scope:1.13.1'
               imagePullPolicy: IfNotPresent
               resources:
+                limits:
+                  memory: 2000Mi
                 requests:
                   cpu: 100m
                   memory: 100Mi
@@ -349,6 +353,8 @@ items:
           hostPID: true
           tolerations:
             - effect: NoSchedule
+              operator: Exists
+            - effect: NoExecute
               operator: Exists
           volumes:
             - name: scope-plugins
