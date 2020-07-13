@@ -10,7 +10,7 @@ current_dir    = File.dirname(File.expand_path(__FILE__))
 Vagrant.configure("2") do |config|
   config.vm.box_check_update = false
 
-  config.vm.box = "ubuntu-server-without-microk8s"
+  config.vm.box = "rst/ubuntu-server-20.04-0.2.0-b05"
 
   config.vm.boot_timeout = 600
 
