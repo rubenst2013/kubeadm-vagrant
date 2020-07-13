@@ -6,8 +6,8 @@ $MASTER_PORT  = "8443"
 $NODE_IP_NW   = "192.168.26."
 $POD_NW_CIDR  = "10.244.0.0/16"
                
-$DOCKER_VER = "5:19.03.5~3-0~ubuntu-bionic"
-$KUBE_VER   = "1.17.0"
+$DOCKER_VER = "5:19.03.12~3-0~ubuntu-focal"
+$KUBE_VER   = "1.18.5"
 $KUBE_TOKEN = "ayngk7.m1555duk5x2i3ctt"
 $IMAGE_REPO = "k8s.gcr.io" # "registry.aliyuncs.com/google_containers"
 
