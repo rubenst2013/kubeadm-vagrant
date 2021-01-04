@@ -128,11 +128,11 @@ listen https
 
 backend http_back
     mode tcp
-#{gen_haproxy_lb_backend($NODE_COUNT, 80)}
+#{gen_haproxy_lb_backend($NODE_COUNT, 32080)}
 
 backend https_back
     mode tcp
-#{gen_haproxy_lb_backend($NODE_COUNT, 443)}
+#{gen_haproxy_lb_backend($NODE_COUNT, 32443)}
 EOF
 
 systemctl restart haproxy
