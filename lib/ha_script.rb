@@ -151,7 +151,7 @@ if [ ${vrrp_state} = "MASTER" ]; then
 
   status "Install and prepare helm k8s package manager"
   snap install helm --classic
-  helm repo add stable https://kubernetes-charts.storage.googleapis.com/  #ToDo: Switch to helm hub in the future. https://helm.sh/blog/helm-v3-beta/
+  helm repo add stable https://charts.helm.sh/stable  #ToDo: Switch to helm hub in the future. https://helm.sh/blog/helm-v3-beta/
   helm repo update
 
   status "Register bash completion"
