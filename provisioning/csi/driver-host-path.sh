@@ -14,3 +14,6 @@ popd
 pushd ./examples
 kubectl apply -f csi-storageclass.yaml
 popd
+
+# Mark hostpath sc as default
+kubectl patch storageclass csi-hostpath-sc -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
